@@ -2,17 +2,14 @@ import http from "http";
 
 const PORT = 3001;
 
-const server = http.createServer((request, response) =>
-{
-    if (request.url === "/health" && request.method === "GET")
-    {
-        response.writeHead(200, { "Content-Type": "application/json" });
-        response.end(JSON.stringify({ status: "ok" }));
+const server = http.createServer((request, response) => {
+    if (request.url === "/health" && request.method === "GET") {
+        response.writeHead(200, {"Content-Type": "application/json"});
+        response.end(JSON.stringify({status: "ok"}));
         return;
     }
 
-    if (request.url === "/api/labs" && request.method === "GET")
-    {
+    if (request.url === "/api/labs" && request.method === "GET") {
         const labs = [
             {
                 id: "lab-2026-01-29",
@@ -87,13 +84,13 @@ const server = http.createServer((request, response) =>
             }
         ];
 
-        response.writeHead(200, { "Content-Type": "application/json" });
+        response.writeHead(200, {"Content-Type": "application/json"});
         response.end(JSON.stringify(labs));
         return;
     }
 
-    response.writeHead(404, { "Content-Type": "application/json" });
-    response.end(JSON.stringify({ error: "Not found" }));
+    response.writeHead(404, {"Content-Type": "application/json"});
+    response.end(JSON.stringify({error: "Not found"}));
 });
 
 server.listen(PORT, () => {
