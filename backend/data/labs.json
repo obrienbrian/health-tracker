@@ -1,0 +1,804 @@
+[
+  {
+    "id": "lab-2026-01-29",
+    "dateCollected": "2026-01-29",
+    "dateReported": "2026-02-05",
+    "fasting": false,
+    "panels": [
+      {
+        "name": "Thyroid",
+        "biomarkers": [
+          {
+            "name": "TSH",
+            "value": 1.33,
+            "unit": "uIU/mL",
+            "referenceMin": 0.45,
+            "referenceMax": 4.5,
+            "flag": "normal"
+          },
+          {
+            "name": "Free T4",
+            "value": 1.24,
+            "unit": "ng/dL",
+            "referenceMin": 0.82,
+            "referenceMax": 1.77,
+            "flag": "normal"
+          },
+          {
+            "name": "Free T3",
+            "value": 3.7,
+            "unit": "pg/mL",
+            "referenceMin": 2,
+            "referenceMax": 4.4,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "CBC",
+        "biomarkers": [
+          {
+            "name": "WBC",
+            "value": 5,
+            "unit": "x10E3/uL",
+            "referenceMin": 3.4,
+            "referenceMax": 10.8,
+            "flag": "normal"
+          },
+          {
+            "name": "RBC",
+            "value": 5.68,
+            "unit": "x10E6/uL",
+            "referenceMin": 4.14,
+            "referenceMax": 5.8,
+            "flag": "normal"
+          },
+          {
+            "name": "Hemoglobin",
+            "value": 16,
+            "unit": "g/dL",
+            "referenceMin": 13,
+            "referenceMax": 17.7,
+            "flag": "normal"
+          },
+          {
+            "name": "Hematocrit",
+            "value": 50.1,
+            "unit": "%",
+            "referenceMin": 37.5,
+            "referenceMax": 51,
+            "flag": "normal"
+          },
+          {
+            "name": "Platelets",
+            "value": 317,
+            "unit": "x10E3/uL",
+            "referenceMin": 150,
+            "referenceMax": 450,
+            "flag": "normal"
+          },
+          {
+            "name": "MCV",
+            "value": 88,
+            "unit": "fL",
+            "referenceMin": 79,
+            "referenceMax": 97,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Metabolic Panel",
+        "biomarkers": [
+          {
+            "name": "Glucose",
+            "value": 102,
+            "unit": "mg/dL",
+            "referenceMin": 70,
+            "referenceMax": 99,
+            "flag": "high"
+          },
+          {
+            "name": "BUN",
+            "value": 11,
+            "unit": "mg/dL",
+            "referenceMin": 6,
+            "referenceMax": 20,
+            "flag": "normal"
+          },
+          {
+            "name": "Creatinine",
+            "value": 1.01,
+            "unit": "mg/dL",
+            "referenceMin": 0.76,
+            "referenceMax": 1.27,
+            "flag": "normal"
+          },
+          {
+            "name": "eGFR",
+            "value": 106,
+            "unit": "mL/min/1.73",
+            "referenceMin": 59,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "Sodium",
+            "value": 142,
+            "unit": "mmol/L",
+            "referenceMin": 134,
+            "referenceMax": 144,
+            "flag": "normal"
+          },
+          {
+            "name": "Potassium",
+            "value": 4.9,
+            "unit": "mmol/L",
+            "referenceMin": 3.5,
+            "referenceMax": 5.2,
+            "flag": "normal"
+          },
+          {
+            "name": "Calcium",
+            "value": 9.7,
+            "unit": "mg/dL",
+            "referenceMin": 8.7,
+            "referenceMax": 10.2,
+            "flag": "normal"
+          },
+          {
+            "name": "Protein, Total",
+            "value": 7.4,
+            "unit": "g/dL",
+            "referenceMin": 6,
+            "referenceMax": 8.5,
+            "flag": "normal"
+          },
+          {
+            "name": "Albumin",
+            "value": 5.1,
+            "unit": "g/dL",
+            "referenceMin": 4.3,
+            "referenceMax": 5.2,
+            "flag": "normal"
+          },
+          {
+            "name": "Bilirubin, Total",
+            "value": 0.4,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 1.2,
+            "flag": "normal"
+          },
+          {
+            "name": "Alk Phos",
+            "value": 60,
+            "unit": "IU/L",
+            "referenceMin": 47,
+            "referenceMax": 123,
+            "flag": "normal"
+          },
+          {
+            "name": "AST",
+            "value": 27,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 40,
+            "flag": "normal"
+          },
+          {
+            "name": "ALT",
+            "value": 28,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 44,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Lipid Panel",
+        "biomarkers": [
+          {
+            "name": "Total Cholesterol",
+            "value": 180,
+            "unit": "mg/dL",
+            "referenceMin": 100,
+            "referenceMax": 199,
+            "flag": "normal"
+          },
+          {
+            "name": "Triglycerides",
+            "value": 121,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 149,
+            "flag": "normal"
+          },
+          {
+            "name": "HDL",
+            "value": 40,
+            "unit": "mg/dL",
+            "referenceMin": 39,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "LDL",
+            "value": 118,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 99,
+            "flag": "high"
+          },
+          {
+            "name": "VLDL",
+            "value": 22,
+            "unit": "mg/dL",
+            "referenceMin": 5,
+            "referenceMax": 40,
+            "flag": "normal"
+          },
+          {
+            "name": "LDL/HDL Ratio",
+            "value": 3,
+            "unit": "ratio",
+            "referenceMin": 0,
+            "referenceMax": 3.6,
+            "flag": "normal"
+          },
+          {
+            "name": "Apolipoprotein B",
+            "value": 94,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 90,
+            "flag": "high"
+          }
+        ]
+      },
+      {
+        "name": "Hormones",
+        "biomarkers": [
+          {
+            "name": "Testosterone, Total",
+            "value": 1499.2,
+            "unit": "ng/dL",
+            "referenceMin": 264,
+            "referenceMax": 916,
+            "flag": "high"
+          },
+          {
+            "name": "SHBG",
+            "value": 54.8,
+            "unit": "nmol/L",
+            "referenceMin": 16.5,
+            "referenceMax": 55.9,
+            "flag": "normal"
+          },
+          {
+            "name": "Testosterone, Free",
+            "value": 267.5,
+            "unit": "pg/mL",
+            "referenceMin": 47.7,
+            "referenceMax": 173.9,
+            "flag": "high"
+          },
+          {
+            "name": "Estradiol",
+            "value": 19.9,
+            "unit": "pg/mL",
+            "referenceMin": 8,
+            "referenceMax": 35,
+            "flag": "normal"
+          },
+          {
+            "name": "DHEA",
+            "value": 266,
+            "unit": "ng/dL",
+            "referenceMin": 31,
+            "referenceMax": 701,
+            "flag": "normal"
+          },
+          {
+            "name": "Pregnenolone",
+            "value": 14,
+            "unit": "ng/dL",
+            "referenceMin": 0,
+            "referenceMax": 151,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Metabolic Markers",
+        "biomarkers": [
+          {
+            "name": "HbA1c",
+            "value": 5.1,
+            "unit": "%",
+            "referenceMin": 4.8,
+            "referenceMax": 5.6,
+            "flag": "normal"
+          },
+          {
+            "name": "Insulin",
+            "value": 26.4,
+            "unit": "uIU/mL",
+            "referenceMin": 2.6,
+            "referenceMax": 24.9,
+            "flag": "high"
+          },
+          {
+            "name": "CRP, Cardiac",
+            "value": 0.89,
+            "unit": "mg/L",
+            "referenceMin": 0,
+            "referenceMax": 3,
+            "flag": "normal"
+          },
+          {
+            "name": "GGT",
+            "value": 27,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 65,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Other",
+        "biomarkers": [
+          {
+            "name": "PSA",
+            "value": 0.9,
+            "unit": "ng/mL",
+            "referenceMin": 0,
+            "referenceMax": 4,
+            "flag": "normal"
+          },
+          {
+            "name": "VEGF",
+            "value": 522,
+            "unit": "pg/mL",
+            "referenceMin": 62,
+            "referenceMax": 707,
+            "flag": "normal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lab-2025-01-06",
+    "dateCollected": "2025-01-06",
+    "dateReported": "2025-01-10",
+    "fasting": true,
+    "panels": [
+      {
+        "name": "Thyroid",
+        "biomarkers": [
+          {
+            "name": "TSH",
+            "value": 3.03,
+            "unit": "uIU/mL",
+            "referenceMin": 0.45,
+            "referenceMax": 4.5,
+            "flag": "normal"
+          },
+          {
+            "name": "Free T4",
+            "value": 1.44,
+            "unit": "ng/dL",
+            "referenceMin": 0.82,
+            "referenceMax": 1.77,
+            "flag": "normal"
+          },
+          {
+            "name": "Free T3",
+            "value": 3.7,
+            "unit": "pg/mL",
+            "referenceMin": 2,
+            "referenceMax": 4.4,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "CBC",
+        "biomarkers": [
+          {
+            "name": "WBC",
+            "value": 6.2,
+            "unit": "x10E3/uL",
+            "referenceMin": 3.4,
+            "referenceMax": 10.8,
+            "flag": "normal"
+          },
+          {
+            "name": "RBC",
+            "value": 5.75,
+            "unit": "x10E6/uL",
+            "referenceMin": 4.14,
+            "referenceMax": 5.8,
+            "flag": "normal"
+          },
+          {
+            "name": "Hemoglobin",
+            "value": 16.9,
+            "unit": "g/dL",
+            "referenceMin": 13,
+            "referenceMax": 17.7,
+            "flag": "normal"
+          },
+          {
+            "name": "Hematocrit",
+            "value": 49,
+            "unit": "%",
+            "referenceMin": 37.5,
+            "referenceMax": 51,
+            "flag": "normal"
+          },
+          {
+            "name": "Platelets",
+            "value": 218,
+            "unit": "x10E3/uL",
+            "referenceMin": 150,
+            "referenceMax": 450,
+            "flag": "normal"
+          },
+          {
+            "name": "MCV",
+            "value": 85,
+            "unit": "fL",
+            "referenceMin": 79,
+            "referenceMax": 97,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Metabolic Panel",
+        "biomarkers": [
+          {
+            "name": "Glucose",
+            "value": 94,
+            "unit": "mg/dL",
+            "referenceMin": 70,
+            "referenceMax": 99,
+            "flag": "normal"
+          },
+          {
+            "name": "BUN",
+            "value": 17,
+            "unit": "mg/dL",
+            "referenceMin": 6,
+            "referenceMax": 20,
+            "flag": "normal"
+          },
+          {
+            "name": "Creatinine",
+            "value": 1.13,
+            "unit": "mg/dL",
+            "referenceMin": 0.76,
+            "referenceMax": 1.27,
+            "flag": "normal"
+          },
+          {
+            "name": "eGFR",
+            "value": 93,
+            "unit": "mL/min/1.73",
+            "referenceMin": 59,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "Sodium",
+            "value": 140,
+            "unit": "mmol/L",
+            "referenceMin": 134,
+            "referenceMax": 144,
+            "flag": "normal"
+          },
+          {
+            "name": "Potassium",
+            "value": 4.8,
+            "unit": "mmol/L",
+            "referenceMin": 3.5,
+            "referenceMax": 5.2,
+            "flag": "normal"
+          },
+          {
+            "name": "Calcium",
+            "value": 9.9,
+            "unit": "mg/dL",
+            "referenceMin": 8.7,
+            "referenceMax": 10.2,
+            "flag": "normal"
+          },
+          {
+            "name": "AST",
+            "value": 21,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 40,
+            "flag": "normal"
+          },
+          {
+            "name": "ALT",
+            "value": 26,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 44,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Lipid Panel",
+        "biomarkers": [
+          {
+            "name": "Total Cholesterol",
+            "value": 118,
+            "unit": "mg/dL",
+            "referenceMin": 100,
+            "referenceMax": 199,
+            "flag": "normal"
+          },
+          {
+            "name": "Triglycerides",
+            "value": 79,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 149,
+            "flag": "normal"
+          },
+          {
+            "name": "HDL",
+            "value": 42,
+            "unit": "mg/dL",
+            "referenceMin": 39,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "LDL",
+            "value": 60,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 99,
+            "flag": "normal"
+          },
+          {
+            "name": "VLDL",
+            "value": 16,
+            "unit": "mg/dL",
+            "referenceMin": 5,
+            "referenceMax": 40,
+            "flag": "normal"
+          },
+          {
+            "name": "Apolipoprotein B",
+            "value": 58,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 90,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Hormones",
+        "biomarkers": [
+          {
+            "name": "Testosterone, Total",
+            "value": 814,
+            "unit": "ng/dL",
+            "referenceMin": 264,
+            "referenceMax": 916,
+            "flag": "normal"
+          },
+          {
+            "name": "SHBG",
+            "value": 33.7,
+            "unit": "nmol/L",
+            "referenceMin": 16.5,
+            "referenceMax": 55.9,
+            "flag": "normal"
+          },
+          {
+            "name": "Testosterone, Free",
+            "value": 164.1,
+            "unit": "pg/mL",
+            "referenceMin": 47.7,
+            "referenceMax": 173.9,
+            "flag": "normal"
+          },
+          {
+            "name": "Estradiol",
+            "value": 17,
+            "unit": "pg/mL",
+            "referenceMin": 8,
+            "referenceMax": 35,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Metabolic Markers",
+        "biomarkers": [
+          {
+            "name": "HbA1c",
+            "value": 5.6,
+            "unit": "%",
+            "referenceMin": 4.8,
+            "referenceMax": 5.6,
+            "flag": "normal"
+          },
+          {
+            "name": "Insulin",
+            "value": 10.6,
+            "unit": "uIU/mL",
+            "referenceMin": 2.6,
+            "referenceMax": 24.9,
+            "flag": "normal"
+          },
+          {
+            "name": "CRP, Cardiac",
+            "value": 0.57,
+            "unit": "mg/L",
+            "referenceMin": 0,
+            "referenceMax": 3,
+            "flag": "normal"
+          },
+          {
+            "name": "GGT",
+            "value": 19,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 65,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Other",
+        "biomarkers": [
+          {
+            "name": "PSA",
+            "value": 0.6,
+            "unit": "ng/mL",
+            "referenceMin": 0,
+            "referenceMax": 4,
+            "flag": "normal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lab-2024-09-20",
+    "dateCollected": "2024-09-20",
+    "dateReported": "2024-09-25",
+    "fasting": true,
+    "panels": [
+      {
+        "name": "Metabolic Panel",
+        "biomarkers": [
+          {
+            "name": "Creatinine",
+            "value": 0.9,
+            "unit": "mg/dL",
+            "referenceMin": 0.76,
+            "referenceMax": 1.27,
+            "flag": "normal"
+          },
+          {
+            "name": "eGFR",
+            "value": 123,
+            "unit": "mL/min/1.73",
+            "referenceMin": 59,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "ALT",
+            "value": 52,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 44,
+            "flag": "high"
+          }
+        ]
+      },
+      {
+        "name": "Lipid Panel",
+        "biomarkers": [
+          {
+            "name": "Total Cholesterol",
+            "value": 116,
+            "unit": "mg/dL",
+            "referenceMin": 100,
+            "referenceMax": 199,
+            "flag": "normal"
+          },
+          {
+            "name": "Triglycerides",
+            "value": 134,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 149,
+            "flag": "normal"
+          },
+          {
+            "name": "HDL",
+            "value": 22,
+            "unit": "mg/dL",
+            "referenceMin": 39,
+            "referenceMax": null,
+            "flag": "low"
+          },
+          {
+            "name": "LDL",
+            "value": 70,
+            "unit": "mg/dL",
+            "referenceMin": 0,
+            "referenceMax": 99,
+            "flag": "normal"
+          }
+        ]
+      },
+      {
+        "name": "Metabolic Markers",
+        "biomarkers": [
+          {
+            "name": "CRP, Cardiac",
+            "value": 0.81,
+            "unit": "mg/L",
+            "referenceMin": 0,
+            "referenceMax": 3,
+            "flag": "normal"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "lab-2024-01-30",
+    "dateCollected": "2024-01-30",
+    "dateReported": "2024-02-05",
+    "fasting": true,
+    "panels": [
+      {
+        "name": "Metabolic Panel",
+        "biomarkers": [
+          {
+            "name": "Creatinine",
+            "value": 1.02,
+            "unit": "mg/dL",
+            "referenceMin": 0.76,
+            "referenceMax": 1.27,
+            "flag": "normal"
+          },
+          {
+            "name": "eGFR",
+            "value": 105,
+            "unit": "mL/min/1.73",
+            "referenceMin": 59,
+            "referenceMax": null,
+            "flag": "normal"
+          },
+          {
+            "name": "ALT",
+            "value": 67,
+            "unit": "IU/L",
+            "referenceMin": 0,
+            "referenceMax": 44,
+            "flag": "high"
+          }
+        ]
+      }
+    ]
+  }
+]

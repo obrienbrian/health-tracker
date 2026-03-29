@@ -1,96 +1,45 @@
 import http from "http";
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
-const PORT = 3001;
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const PORT = process.env.PORT || 3001;
+
+// Load lab data from external JSON file
+const labs = JSON.parse(
+    readFileSync(join(__dirname, "data", "labs.json"), "utf-8")
+);
+
+// CORS headers to allow the frontend dev server to make requests
+const corsHeaders = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type",
+};
 
 const server = http.createServer((request, response) => {
+    // Handle CORS preflight requests
+    if (request.method === "OPTIONS") {
+        response.writeHead(204, corsHeaders);
+        response.end();
+        return;
+    }
+
     if (request.url === "/health" && request.method === "GET") {
-        response.writeHead(200, {"Content-Type": "application/json"});
-        response.end(JSON.stringify({status: "ok"}));
+        response.writeHead(200, { "Content-Type": "application/json", ...corsHeaders });
+        response.end(JSON.stringify({ status: "ok" }));
         return;
     }
 
     if (request.url === "/api/labs" && request.method === "GET") {
-        const labs = [
-            {
-                id: "lab-2026-01-29",
-                dateCollected: "2026-01-29",
-                dateReported: "2026-02-05",
-                fasting: false,
-                panels: [
-                    {
-                        name: "Metabolic Panel",
-                        biomarkers: [
-                            {
-                                name: "Glucose",
-                                value: 102,
-                                unit: "mg/dL",
-                                referenceMin: 70,
-                                referenceMax: 99,
-                                flag: "high"
-                            },
-                            {
-                                name: "Creatinine",
-                                value: 1.01,
-                                unit: "mg/dL",
-                                referenceMin: 0.76,
-                                referenceMax: 1.27,
-                                flag: "normal"
-                            }
-                        ]
-                    },
-                    {
-                        name: "Lipid Panel",
-                        biomarkers: [
-                            {
-                                name: "Total Cholesterol",
-                                value: 180,
-                                unit: "mg/dL",
-                                referenceMin: 100,
-                                referenceMax: 199,
-                                flag: "normal"
-                            },
-                            {
-                                name: "LDL",
-                                value: 118,
-                                unit: "mg/dL",
-                                referenceMin: 0,
-                                referenceMax: 99,
-                                flag: "high"
-                            }
-                        ]
-                    }
-                ]
-            },
-            {
-                id: "lab-2025-01-06",
-                dateCollected: "2025-01-06",
-                dateReported: "2025-01-10",
-                fasting: true,
-                panels: [
-                    {
-                        name: "Metabolic Panel",
-                        biomarkers: [
-                            {
-                                name: "Glucose",
-                                value: 94,
-                                unit: "mg/dL",
-                                referenceMin: 70,
-                                referenceMax: 99,
-                                flag: "normal"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ];
-
-        response.writeHead(200, {"Content-Type": "application/json"});
+        response.writeHead(200, { "Content-Type": "application/json", ...corsHeaders });
         response.end(JSON.stringify(labs));
         return;
     }
 
-    response.writeHead(404, {"Content-Type": "application/json"});
-    response.end(JSON.stringify({error: "Not found"}));
+    response.writeHead(404, { "Content-Type": "application/json", ...corsHeaders });
+    response.end(JSON.stringify({ error: "Not found" }));
 });
 
 server.listen(PORT, () => {
