@@ -67,11 +67,11 @@ export function PanelAccordion({
 
   return (
     <div className="overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-gray-100">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="flex w-full items-center justify-between px-6 py-4 text-left transition-colors hover:bg-gray-50"
-      >
-        <div className="flex items-center gap-3">
+      <div className="flex w-full items-center justify-between px-6 py-4 transition-colors hover:bg-gray-50">
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="flex flex-1 items-center gap-3 text-left"
+        >
           {expanded ? (
             <ChevronDown className="h-5 w-5 text-gray-400" />
           ) : (
@@ -88,18 +88,15 @@ export function PanelAccordion({
               )}
             </p>
           </div>
-        </div>
+        </button>
         <button
-          onClick={(e) => {
-            e.stopPropagation();
-            onRemovePanel();
-          }}
+          onClick={onRemovePanel}
           className="rounded p-1 text-gray-400 hover:bg-red-50 hover:text-red-500"
           title="Remove panel"
         >
           <Trash2 className="h-4 w-4" />
         </button>
-      </button>
+      </div>
 
       {expanded && (
         <div className="border-t border-gray-100">
@@ -130,7 +127,7 @@ export function PanelAccordion({
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {biomarkers.map((b, i) => (
-                  <tr key={i} className="hover:bg-gray-50">
+                  <tr key={`${b.name}-${i}`} className="hover:bg-gray-50">
                     <td className="px-4 py-2">
                       <input
                         type="text"
