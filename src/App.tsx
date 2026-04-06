@@ -6,6 +6,7 @@ import { Dashboard } from "./pages/Dashboard";
 import { LabResults } from "./pages/LabResults";
 import { Trends } from "./pages/Trends";
 import { Notes } from "./pages/Notes";
+import { AddLabResult } from "./pages/AddLabResult";
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated } = useAuth();
@@ -43,6 +44,7 @@ function App() {
       >
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/results" element={<LabResults />} />
+        <Route path="/results/add" element={<AddLabResult />} />
         <Route path="/trends" element={<Trends />} />
         <Route path="/trends/:biomarkerName" element={<Trends />} />
         <Route path="/notes" element={<Notes />} />

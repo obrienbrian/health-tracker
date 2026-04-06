@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, ChevronRight, FileText } from "lucide-react";
+import { ChevronDown, ChevronRight, FileText, Plus } from "lucide-react";
 import { useLabData } from "../hooks/useLabData";
 import { FlagBadge } from "../components/FlagBadge";
 
@@ -58,24 +58,33 @@ export function LabResults() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <FileText className="h-4 w-4 text-gray-400" />
-          <select
-            value={selectedDate}
-            onChange={(e) => handleDateChange(e.target.value)}
-            className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <FileText className="h-4 w-4 text-gray-400" />
+            <select
+              value={selectedDate}
+              onChange={(e) => handleDateChange(e.target.value)}
+              className="rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+            >
+              {sortedResults.map((r) => (
+                <option key={r.id} value={r.dateCollected}>
+                  {new Date(r.dateCollected).toLocaleDateString("en-US", {
+                    month: "long",
+                    day: "numeric",
+                    year: "numeric",
+                  })}
+                  {r.fasting ? " (Fasting)" : ""}
+                </option>
+              ))}
+            </select>
+          </div>
+          <Link
+            to="/results/add"
+            className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700"
           >
-            {sortedResults.map((r) => (
-              <option key={r.id} value={r.dateCollected}>
-                {new Date(r.dateCollected).toLocaleDateString("en-US", {
-                  month: "long",
-                  day: "numeric",
-                  year: "numeric",
-                })}
-                {r.fasting ? " (Fasting)" : ""}
-              </option>
-            ))}
-          </select>
+            <Plus className="h-4 w-4" />
+            Add Result
+          </Link>
         </div>
       </div>
 

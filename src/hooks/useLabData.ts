@@ -15,27 +15,21 @@ export function useLabData() {
   const [labResults, setLabResults] = useState<LabResult[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    let cancelled = false;
-
-    async function fetchLabs() {
-      try {
-        const data = await api<LabResult[]>("/labs");
-        if (!cancelled) {
-          setLabResults(data);
-        }
-      } catch (err) {
-        console.error("Failed to fetch lab results:", err);
-      } finally {
-        if (!cancelled) {
-          setLoading(false);
-        }
-      }
+  const fetchLabs = useCallback(async () => {
+    try {
+      setLoading(true);
+      const data = await api<LabResult[]>("/labs");
+      setLabResults(data);
+    } catch (err) {
+      console.error("Failed to fetch lab results:", err);
+    } finally {
+      setLoading(false);
     }
-
-    fetchLabs();
-    return () => { cancelled = true; };
   }, []);
+
+  useEffect(() => {
+    fetchLabs();
+  }, [fetchLabs]);
 
   const getBiomarkerHistory = useCallback(
     (name: string): BiomarkerHistoryEntry[] => {
@@ -65,5 +59,5 @@ export function useLabData() {
     [labResults],
   );
 
-  return { labResults, loading, getBiomarkerHistory };
+  return { labResults, loading, getBiomarkerHistory, refetch: fetchLabs };
 }
