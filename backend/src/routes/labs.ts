@@ -142,8 +142,6 @@ router.get("/:id", async (req: Request, res: Response) => {
   });
 });
 
-export default router;
-
 // POST /api/labs — create a new lab result for the logged-in user
 router.post("/", async (req: Request, res: Response) => {
   try {
@@ -207,3 +205,5 @@ router.post("/", async (req: Request, res: Response) => {
     res.status(500).json({ error: "Failed to create lab result" });
   }
 });
+
+export default router;
