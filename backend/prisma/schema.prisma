@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// SQLite does not support enums — flag is stored as a String ("HIGH", "LOW", "NORMAL")
+
+model User {
+  id           String       @id @default(cuid())
+  email        String       @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime     @default(now())
+  labResults   LabResult[]
+  notes        HealthNote[]
+}
+
+model LabResult {
+  id            String   @id @default(cuid())
+  userId        String
+  dateCollected DateTime
+  dateReported  DateTime
+  fasting       Boolean
+  user          User     @relation(fields: [userId], references: [id])
+  panels        Panel[]
+}
+
+model Panel {
+  id          String      @id @default(cuid())
+  labResultId String
+  name        String
+  labResult   LabResult   @relation(fields: [labResultId], references: [id])
+  biomarkers  Biomarker[]
+}
+
+model Biomarker {
+  id           String @id @default(cuid())
+  panelId      String
+  name         String
+  value        Float
+  unit         String
+  referenceMin Float?
+  referenceMax Float?
+  flag         String // "HIGH", "LOW", or "NORMAL"
+  panel        Panel  @relation(fields: [panelId], references: [id])
+}
+
+model HealthNote {
+  id        String   @id @default(cuid())
+  userId    String
+  date      DateTime
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+}
