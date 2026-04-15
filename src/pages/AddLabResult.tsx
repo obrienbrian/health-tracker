@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus, Save, ChevronDown } from "lucide-react";
 import { api } from "../lib/api";
@@ -18,6 +18,8 @@ export function AddLabResult() {
   const [error, setError] = useState("");
   const [showTemplateMenu, setShowTemplateMenu] = useState(false);
 
+  const templateMenuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     api<PanelTemplate[]>("/labs/templates")
       .then(setTemplates)
@@ -30,6 +32,23 @@ export function AddLabResult() {
     setFasting(result.fasting);
     setPanels(result.panels);
   }
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+          templateMenuRef.current &&
+          !templateMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowTemplateMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   function updatePanelBiomarkers(panelIndex: number, biomarkers: Biomarker[]) {
     setPanels((prev) =>
@@ -180,7 +199,7 @@ export function AddLabResult() {
       )}
 
       {/* Add Panel */}
-      <div className="relative">
+      <div className="relative" ref={templateMenuRef}>
         <button
           onClick={() => setShowTemplateMenu(!showTemplateMenu)}
           className="flex items-center gap-2 rounded-lg border border-dashed border-gray-300 px-4 py-3 text-sm text-gray-600 transition-colors hover:border-gray-400 hover:bg-gray-50"
