@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ChevronDown, ChevronRight, FileText, Plus } from "lucide-react";
 import { useLabData } from "../hooks/useLabData";
@@ -17,12 +17,17 @@ export function LabResults() {
     [labResults],
   );
 
-  const [selectedDate, setSelectedDate] = useState(
-    sortedResults[0]?.dateCollected ?? "",
-  );
-  const [expandedPanels, setExpandedPanels] = useState<Set<string>>(
-    new Set(sortedResults[0]?.panels.map((p) => p.name) ?? []),
-  );
+  const [selectedDate, setSelectedDate] = useState("");
+  const [expandedPanels, setExpandedPanels] = useState<Set<string>>(new Set());
+
+  /* eslint-disable react-hooks/set-state-in-effect */
+  useEffect(() => {
+    if (!selectedDate && sortedResults[0]) {
+      setSelectedDate(sortedResults[0].dateCollected);
+      setExpandedPanels(new Set(sortedResults[0].panels.map((p) => p.name)));
+    }
+  }, [sortedResults, selectedDate]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const selectedResult = sortedResults.find(
     (r) => r.dateCollected === selectedDate,
