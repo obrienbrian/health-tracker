@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext, createContext, type ReactNode } from "react";
 import { api, setToken, getToken } from "../lib/api";
 import type { AuthResponse } from "../types";
 
@@ -6,6 +6,14 @@ interface AuthState {
   isAuthenticated: boolean;
   userName: string;
 }
+
+interface AuthContextValue extends AuthState {
+  login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, name: string) => Promise<void>;
+  logout: () => void;
+}
+
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 function getStoredAuth(): AuthState {
   const token = getToken();
@@ -16,7 +24,7 @@ function getStoredAuth(): AuthState {
   return { isAuthenticated: false, userName: "" };
 }
 
-export function useAuth() {
+export function AuthProvider({ children }: { children: ReactNode }) {
   const [auth, setAuth] = useState<AuthState>(getStoredAuth);
 
   const login = useCallback(async (email: string, password: string) => {
@@ -45,11 +53,17 @@ export function useAuth() {
     setAuth({ isAuthenticated: false, userName: "" });
   }, []);
 
-  return {
-    isAuthenticated: auth.isAuthenticated,
-    userName: auth.userName,
-    login,
-    register,
-    logout,
-  };
+  return (
+    <AuthContext.Provider value={{ ...auth, login, register, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+}
+
+export function useAuth(): AuthContextValue {
+  const ctx = useContext(AuthContext);
+  if (!ctx) {
+    throw new Error("useAuth must be used within an AuthProvider");
+  }
+  return ctx;
 }
