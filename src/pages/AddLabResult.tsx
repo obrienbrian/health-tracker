@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { Plus, Save, ChevronDown } from "lucide-react";
 import { api } from "../lib/api";
 import { PdfUpload } from "../components/PdfUpload";
 import { PanelAccordion } from "../components/PanelAccordion";
-import type { Biomarker, Panel, ParsedLabResult, PanelTemplate } from "../types";
+import type {
+  Biomarker,
+  Panel,
+  ParsedLabResult,
+  PanelTemplate,
+} from "../types";
 
 export function AddLabResult() {
   const navigate = useNavigate();
@@ -18,6 +23,8 @@ export function AddLabResult() {
   const [error, setError] = useState("");
   const [showTemplateMenu, setShowTemplateMenu] = useState(false);
 
+  const templateMenuRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     api<PanelTemplate[]>("/labs/templates")
       .then(setTemplates)
@@ -30,6 +37,23 @@ export function AddLabResult() {
     setFasting(result.fasting);
     setPanels(result.panels);
   }
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        templateMenuRef.current &&
+        !templateMenuRef.current.contains(event.target as Node)
+      ) {
+        setShowTemplateMenu(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   function updatePanelBiomarkers(panelIndex: number, biomarkers: Biomarker[]) {
     setPanels((prev) =>
@@ -105,14 +129,18 @@ export function AddLabResult() {
       });
       navigate("/results");
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to save lab result");
+      setError(
+        err instanceof Error ? err.message : "Failed to save lab result",
+      );
     } finally {
       setSaving(false);
     }
   }
 
   const usedPanelNames = new Set(panels.map((p) => p.name));
-  const availableTemplates = templates.filter((t) => !usedPanelNames.has(t.name));
+  const availableTemplates = templates.filter(
+    (t) => !usedPanelNames.has(t.name),
+  );
 
   return (
     <div className="space-y-6">
@@ -180,7 +208,7 @@ export function AddLabResult() {
       )}
 
       {/* Add Panel */}
-      <div className="relative">
+      <div className="relative" ref={templateMenuRef}>
         <button
           onClick={() => setShowTemplateMenu(!showTemplateMenu)}
           className="flex items-center gap-2 rounded-lg border border-dashed border-gray-300 px-4 py-3 text-sm text-gray-600 transition-colors hover:border-gray-400 hover:bg-gray-50"
@@ -223,9 +251,7 @@ export function AddLabResult() {
       </div>
 
       {/* Error */}
-      {error && (
-        <p className="text-sm text-red-600">{error}</p>
-      )}
+      {error && <p className="text-sm text-red-600">{error}</p>}
 
       {/* Save */}
       <button
