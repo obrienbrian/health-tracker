@@ -1,4 +1,18 @@
-import pdf from "pdf-parse";
+import { createRequire } from "node:module";
+
+type PdfParseResult = {
+  text: string;
+};
+
+type PdfParse = (
+    dataBuffer: Buffer,
+    options?: Record<string, unknown>
+) => Promise<PdfParseResult>;
+
+// Import the implementation directly so pdf-parse does not run its demo/test
+// entrypoint, which looks for test/data/05-versions-space.pdf on startup.
+const require = createRequire(import.meta.url);
+const pdf = require("pdf-parse/lib/pdf-parse.js") as PdfParse;
 
 interface ParsedBiomarker {
   name: string;
