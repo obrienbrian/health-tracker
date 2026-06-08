@@ -59,5 +59,16 @@ export function useLabData() {
     [labResults],
   );
 
-  return { labResults, loading, getBiomarkerHistory, refetch: fetchLabs };
+  const deleteLabResult = useCallback(async (id: string) => {
+    await api<void>(`/labs/${id}`, { method: "DELETE" });
+    setLabResults((prev) => prev.filter((result) => result.id !== id));
+  }, []);
+
+  return {
+    labResults,
+    loading,
+    getBiomarkerHistory,
+    refetch: fetchLabs,
+    deleteLabResult,
+  };
 }
