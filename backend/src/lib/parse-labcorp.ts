@@ -1,4 +1,12 @@
-import pdf from "pdf-parse";
+import { createRequire } from "node:module";
+import type pdfParse from "pdf-parse";
+
+// Import the implementation directly so pdf-parse does not run its demo/test
+// entrypoint, which looks for test/data/05-versions-space.pdf on startup.
+// This depends on an internal pdf-parse path, so verify this path if the
+// pdf-parse package is upgraded.
+const require = createRequire(import.meta.url);
+const pdf = require("pdf-parse/lib/pdf-parse.js") as typeof pdfParse;
 
 interface ParsedBiomarker {
   name: string;
