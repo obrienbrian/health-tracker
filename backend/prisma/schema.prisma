@@ -33,7 +33,7 @@ model Panel {
   id          String      @id @default(cuid())
   labResultId String
   name        String
-  labResult   LabResult   @relation(fields: [labResultId], references: [id])
+  labResult   LabResult   @relation(fields: [labResultId], references: [id], onDelete: Cascade)
   biomarkers  Biomarker[]
 }
 
@@ -46,7 +46,7 @@ model Biomarker {
   referenceMin Float?
   referenceMax Float?
   flag         String // "HIGH", "LOW", or "NORMAL"
-  panel        Panel  @relation(fields: [panelId], references: [id])
+  panel        Panel  @relation(fields: [panelId], references: [id], onDelete: Cascade)
 }
 
 model HealthNote {

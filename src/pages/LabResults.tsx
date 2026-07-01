@@ -1,11 +1,11 @@
 import { useState, useMemo, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronDown, ChevronRight, FileText, Plus } from "lucide-react";
+import { ChevronDown, ChevronRight, FileText, Plus, Trash2 } from "lucide-react";
 import { useLabData } from "../hooks/useLabData";
 import { FlagBadge } from "../components/FlagBadge";
 
 export function LabResults() {
-  const { labResults } = useLabData();
+  const { labResults, deleteLabResult } = useLabData();
 
   const sortedResults = useMemo(
     () =>
@@ -53,6 +53,20 @@ export function LabResults() {
     }
   }
 
+  async function handleDeleteSelectedResult() {
+    if (!selectedResult) return;
+
+    const confirmed = window.confirm(
+      "Delete this lab result? This cannot be undone.",
+    );
+    if (!confirmed) return;
+
+    await deleteLabResult(selectedResult.id);
+
+    const nextResult = sortedResults.find((r) => r.id !== selectedResult.id);
+    setSelectedDate(nextResult?.dateCollected ?? "");
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
@@ -90,6 +104,16 @@ export function LabResults() {
             <Plus className="h-4 w-4" />
             Add Result
           </Link>
+          {selectedResult && (
+            <button
+              type="button"
+              onClick={handleDeleteSelectedResult}
+              className="flex items-center gap-1.5 rounded-lg border border-red-200 px-3 py-2 text-sm font-medium text-red-600 transition-colors hover:bg-red-50"
+            >
+              <Trash2 className="h-4 w-4" />
+              Delete
+            </button>
+          )}
         </div>
       </div>
 
